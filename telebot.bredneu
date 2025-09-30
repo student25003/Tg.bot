@@ -1,0 +1,15 @@
+import telebot
+bot = telebot.TeleBot('8093189675:AAFG0fAaDR5ymvsGUxfa3Lexci70lMQmnqY')
+
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    answer = f'Вечер в хату'
+    bot.send_message(message.chat.id, answer)
+
+@bot.message_handler(content_types=["text"])
+def repeat_all_messages(message):
+    bot.send_message(message.chat.id, message.text)
+
+if __name__ == '__main__':
+     bot.infinity_polling()
